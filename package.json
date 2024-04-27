@@ -1,0 +1,27 @@
+{
+  "name": "ppi-final-frontend",
+  "version": "1.0.0",
+  "description": "Final Front End - ADS",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Carrielzada/PPI-FINAL-FRONTEND.git"
+  },
+  "keywords": [
+    "ADS"
+  ],
+  "author": "Carrielzada",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Carrielzada/PPI-FINAL-FRONTEND/issues"
+  },
+  "homepage": "https://github.com/Carrielzada/PPI-FINAL-FRONTEND#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "express-session": "^1.18.0"
+  }
+}

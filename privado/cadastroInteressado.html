@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+        <link href="css/main.css" rel="stylesheet" media="all">
+        <title>Cadastrar Interessados!</title>
+    </head>
+    <body>
+        <br/>
+        <div class="container w-60 border p-5">
+            <h1>Cadastro de Interessados</h1>
+            <form id="###" method="POST" action="#" class="row g-3 needs-validation" novalidate>
+                <div class="col-md-4">
+                    <label for="cpf" class="form-label">CPF:</label>
+                    <input type="text" class="form-control" id="cpf" name="cpf" value="" required>
+                    <div class="valid-feedback">
+                    OK!
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="nome" class="form-label">Nome:</label>
+                    <input type="text" class="form-control" id="nome" name="nome" value="" required>
+                    <div class="valid-feedback">
+                    OK!
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="telefone" class="form-label">Telefone:</label>
+                    <input type="text" class="form-control" id="tel" name="telefone" required>
+                    <div class="invalid-feedback">
+                    Por favor, informe o telefone.
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                    <div class="invalid-feedback">
+                    Por favor, informe o email.
+                    </div>
+                </div>
+                
+                <div class="col-12">
+                    <button class="btn btn-primary" id='cadastrar' type="submit">Cadastrar</button>
+                    <button class="btn btn-warning" id='atualizar' type="button" disabled>Atualizar</button>
+                    <button class="btn btn-danger" id='excluir' type="button" disabled>Excluir</button>
+                    <button class="btn btn-secondary" type="button" onclick="history.back()">Voltar</button>
+                </div>
+            </form>
+        </div>
+        <br/>
+        <div id="mensagem">
+
+        </div>
+        </br>
+        <div id="espacoTabela">
+            
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    
+</html>
