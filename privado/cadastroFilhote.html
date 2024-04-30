@@ -11,16 +11,16 @@
         <br/>
         <div class="container w-60 border p-5">
             <h1>Cadastro de Filhotes</h1>
-            <form id="###" method="POST" action="#" class="row g-3 needs-validation" novalidate>
-                <div class="col-md-4">
+            <form id="formFilhote" method="POST" action="#" class="row g-3 needs-validation" novalidate>
+                <div class="col-md-5">
                     <label for="cpf" class="form-label">Espécie:</label>
                     <input type="text" class="form-control" id="especie" name="especie" value="" required>
                     <div class="valid-feedback">
                     OK!
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <label for="nome" class="form-label">Raça:</label>
+                <div class="col-md-5">
+                    <label for="raca" class="form-label">Raça:</label>
                     <input type="text" class="form-control" id="raca" name="raca" value="" required>
                     <div class="valid-feedback">
                     OK!
@@ -28,8 +28,8 @@
                 </div> 
                 <div class="col-12">
                     <button class="btn btn-primary" id='cadastrar' type="submit">Cadastrar</button>
-                    <button class="btn btn-warning" id='atualizar' type="button" disabled>Atualizar</button>
-                    <button class="btn btn-danger" id='excluir' type="button" disabled>Excluir</button>
+                    <button class="btn btn-warning" id='atualizar' type="button">Atualizar</button>
+                    <button class="btn btn-danger" id='excluir' type="button">Excluir</button>
                     <button class="btn btn-secondary" type="button" onclick="history.back()">Voltar</button>
                 </div>
             </form>
@@ -42,6 +42,7 @@
         <div id="espacoTabela">
             
         </div>
+    <script src="./scripts/scriptFilhote.js"></script>
     </body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     
