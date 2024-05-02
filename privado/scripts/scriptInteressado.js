@@ -1,10 +1,19 @@
+document.addEventListener('DOMContentLoaded', function() {
 const formularioInteressado = document.getElementById('formInteressado');
 formularioInteressado.onsubmit = validarFormulario; //Apenas atribui a função, não chama ela
 window.onload=buscarInteressado;//Carrega os dados dos Interessados
 document.getElementById("excluir").onclick = excluirInteressado;
 document.getElementById("atualizar").onclick = atualizarInteressado;
 
-function validarInteressado(interessado){
+function selecionarInteressado(codigo, nome, cpf, telefone, email){
+  document.getElementById('codigo').value = codigo;
+  document.getElementById('nome').value = nome;
+  document.getElementById('cpf').value = cpf;
+  document.getElementById('telefone').value = telefone;
+  document.getElementById('email').value = email;
+}
+
+function validarFormulario(evento){
     evento.preventDefault();
     if (formularioInteressado.checkValidity()){
       formularioInteressado.classList.remove( "was-validated" );
@@ -26,6 +35,8 @@ function validarInteressado(interessado){
     else{
         formularioInteressado.classList.add( "was-validated"); //diz para o bootstrap exibir as msg de validação
     }
+    evento.preventDefault(); //onsubmit deixa de ter o comportamento padrão
+    evento.stopPropagation(); 
 }
 
 function buscarInteressado() {
@@ -44,7 +55,7 @@ function buscarInteressado() {
 function cadastrarInteressado(interessado) {
   // Lembrando que o nosso backend responde requisições HTTP - GET/POST/PUT/PATCH/DELETE
   // FETCH API para fazer requisições em HTTP
-  fetch('http://localhost:3000//interessados', {
+  fetch('http://localhost:3000/interessados', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(interessado),
@@ -54,19 +65,11 @@ function cadastrarInteressado(interessado) {
     if (dados.status) {
       mostrarMensagem(dados.mensagem, true);
       buscarInteressado();
-      limparFormulario();
     } else {
       mostrarMensagem(dados.mensagem, false);
     }
   })
   .catch((erro) => mostrarMensagem(erro.message, false));
-}
-function limparFormulario() {
-  document.getElementById('codigo').value = '';
-  document.getElementById('nome').value = '';
-  document.getElementById('cpf').value = '';
-  document.getElementById('telefone').value = '';
-  document.getElementById('email').value = '';
 }
 
 function mostrarMensagem(mensagem, sucesso = false){
@@ -133,13 +136,6 @@ function exibirTabelaInteressados(listaInteressados) {
     else {
       espacoTabela.innerHTML = '<p>Nenhum cadastro foi encontrado!</p>';
     }
-}
-function selecionarInteressado(codigo, nome, cpf, telefone, email){
-  document.getElementById('codigo').value = codigo;
-  document.getElementById('nome').value = artista;
-  document.getElementById('cpf').value = endereco;
-  document.getElementById('telefone').value = cidade;
-  document.getElementById('email').value = estado;
 }
 
 function atualizarInteressado() {
@@ -230,4 +226,4 @@ function obterInteressadoDoFormulario(tipoOperacao) {
   }
 
   return interessado;
-}
+}});

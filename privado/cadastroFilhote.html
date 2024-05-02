@@ -11,25 +11,32 @@
         <br/>
         <div class="container w-60 border p-5">
             <h1>Cadastro de Filhotes</h1>
+            <p>
+                Quer cadastrar um Interessado?
+                <a
+                  href="http://localhost:4000/cadastroInteressado.html"
+                  title="Realizar cadastro de Interessado à adotar!">
+                  Basta clicar aqui!</a>
+                </p>
             <form id="formFilhote" method="POST" action="#" class="row g-3 needs-validation" novalidate>
                 <div class="col-md-5">
-                    <label for="cpf" class="form-label">Espécie:</label>
-                    <input type="text" class="form-control" id="especie" name="especie" value="" required>
-                    <div class="valid-feedback">
-                    OK!
+                    <label for="especie" class="form-label">Espécie:</label>
+                    <input type="text" class="form-control" id="espécie" name="especie" value="" required>
+                    <div class="invalid-feedback">
+                    Por favor, informe a espécie do filhote!
                     </div>
                 </div>
                 <div class="col-md-5">
                     <label for="raca" class="form-label">Raça:</label>
-                    <input type="text" class="form-control" id="raca" name="raca" value="" required>
-                    <div class="valid-feedback">
-                    OK!
+                    <input type="text" class="form-control" id="raça" name="raca" value="" required>
+                    <div class="invalid-feedback">
+                    Por favor, informe a raça do filhote!
                     </div>
                 </div> 
                 <div class="col-12">
                     <button class="btn btn-primary" id='cadastrar' type="submit">Cadastrar</button>
                     <button class="btn btn-warning" id='atualizar' type="button">Atualizar</button>
-                    <button class="btn btn-danger" id='excluir' type="button">Excluir</button>
+                    <button class="btn btn-danger" id='excluir' type="button"onclick="atualizarFilhote()>Excluir</button>
                     <button class="btn btn-secondary" type="button" onclick="history.back()">Voltar</button>
                 </div>
             </form>

@@ -4,12 +4,18 @@ window.onload=buscarFilhote;//Carrega os dados dos filhotes
 document.getElementById("excluir").onclick = excluirFilhote;
 document.getElementById("atualizar").onclick = atualizarFilhote;
 
-function validarFilhote(filhote){
-    filhote.preventDefault();
+function selecionarFilhote(codigo, espécie, raça){
+  document.getElementById('codigo').value = codigo;
+  document.getElementById('espécie').value = especie;
+  document.getElementById('raça').value = raca;
+}
+
+function validarFormulario(evento){
+    evento.preventDefault();
     if (formularioFilhote.checkValidity()){
-      formulariofilhote.classList.remove( "was-validated" );
-      const especie = document.getElementById("especie").value;
-      const raca = document.getElementById("raca").value;
+      formularioFilhote.classList.remove( "was-validated" );
+      const especie = document.getElementById("espécie").value;
+      const raca = document.getElementById("raça").value;
       
       const filhote = {
         especie, 
@@ -20,8 +26,10 @@ function validarFilhote(filhote){
 
     }
     else{
-        formulariofilhote.classList.add( "was-validated"); //diz para o bootstrap exibir as msg de validação
+        formularioFilhote.classList.add( "was-validated"); //diz para o bootstrap exibir as msg de validação
     }
+    evento.preventDefault(); //onsubmit deixa de ter o comportamento padrão
+    evento.stopPropagation(); //Outros interessados no evento de submissão não saberão que
 }
 
 function buscarFilhote() {
@@ -40,9 +48,11 @@ function buscarFilhote() {
 function cadastrarFilhote(filhote) {
   // Lembrando que o nosso backend responde requisições HTTP - GET/POST/PUT/PATCH/DELETE
   // FETCH API para fazer requisições em HTTP
-  fetch('http://localhost:3000//filhotes', {
+  fetch('http://localhost:3000/filhotes', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(filhote),
   })
   .then((resposta) => resposta.json())
@@ -50,17 +60,11 @@ function cadastrarFilhote(filhote) {
     if (dados.status) {
       mostrarMensagem(dados.mensagem, true);
       buscarFilhote();
-      limparFormulario();
     } else {
       mostrarMensagem(dados.mensagem, false);
     }
   })
   .catch((erro) => mostrarMensagem(erro.message, false));
-}
-function limparFormulario() {
-  document.getElementById('codigo').value = '';
-  document.getElementById('especie').value = '';
-  document.getElementById('raca').value = '';
 }
 
 function mostrarMensagem(mensagem, sucesso = false){
@@ -101,15 +105,15 @@ function exibirTabelaFilhotes(listaFilhotes) {
     `;
   tabela.appendChild(cabecalho);
   const corpo = document.createElement('tbody');
-  for (let i = 0; i < listaFihlotes.length; i++) {
+  for (let i = 0; i < listaFilhotes.length; i++) {
     const filhote = listaFilhotes[i];
     const linha = document.createElement( 'tr');
     linha.innerHTML = `
     <td>${filhote.codigo}</td>
-    <td>${filhote.especie}</td>
-    <td>${filhote.raca}</td>
+    <td>${filhote.espécie}</td>
+    <td>${filhote.raça}</td>
     <td>
-        <button onclick="selecionarFilhote('${filhote.codigo}','${filhote.especie}','${filhote.raca}')">      
+        <button onclick="selecionarFilhote('${filhote.codigo}','${filhote.espécie}','${filhote.raça}')">      
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
           </svg>
@@ -123,11 +127,6 @@ function exibirTabelaFilhotes(listaFilhotes) {
     else {
       espacoTabela.innerHTML = '<p>Nenhum cadastro foi encontrado!</p>';
     }
-}
-function selecionarFilhote(codigo, especie, raca){
-  document.getElementById('codigo').value = codigo;
-  document.getElementById('especie').value = especie;
-  document.getElementById('raca').value = raca;
 }
 
 function atualizarFilhote() {
@@ -199,12 +198,12 @@ function excluirFilhote() {
 }
 
 function obterFilhoteDoFormulario(tipoOperacao) {
-  const especie = document.getElementById('especie').value;
-  const raca = document.getElementById('raca').value;
+  const espécie = document.getElementById('espécie').value;
+  const raça = document.getElementById('raça').value;
 
   const filhote = {
-    especie,
-    raca,
+    espécie,
+    raça,
   };
 
   // Verifica se a operação é para atualização
